@@ -1,6 +1,11 @@
 # hyprland-dotfiles
 Minhas configurações de dotfiles para hyprland com arch linux
 
+<img src="https://github.com/4rthurC4str0/hyprland-dotfiles/blob/main/images/fullscreen.png" width = "100%">
+
+
+<img src="https://github.com/4rthurC4str0/hyprland-dotfiles/blob/main/images/waybar.png" width = "100%">
+
 ## Tema do SDDM
 https://github.com/Keyitdev/sddm-astronaut-theme
 
