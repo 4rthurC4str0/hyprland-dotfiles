@@ -1,0 +1,145 @@
+{
+    "layer": "top",
+    "height": 15,
+    "spacing": 1,
+
+
+    "modules-left": [
+        "hyprland/workspaces", "wlr/taskbar", "custom/cpuhistory"
+    ],
+
+    "modules-center": [
+        "hyprland/window", "clock"
+    ],
+
+    "modules-right": [
+        "backlight", "pulseaudio", "bluetooth", "network", "battery", "custom/power"
+    ],
+
+
+
+
+
+    "hyprland/workspaces": {
+        "persistent-workspaces": {
+            "*": 5 // 5 workspaces by default on every monitor
+        }
+    },
+
+    "wlr/taskbar": {
+        "format": "{icon}",
+        "icon-size": 14,
+        "tooltip-format": "{title}",
+        "on-click": "activate",
+        "on-click-middle": "close",
+        "ignore-list": [
+            "Alacritty"
+        ],
+        "app_ids-mapping": {
+            "firefoxdeveloperedition": "firefox-developer-edition"
+        },
+        "rewrite": {
+            "Firefox Web Browser": "Firefox",
+            "Foot Server": "Terminal"
+        }
+    },
+
+    "custom/cpuhistory": {
+        "exec": "~/.config/waybar/scripts/cpu_history.py -d 60",
+        "format": "<span color='#FFA500'>  </span>{}",
+        "interval": 1,
+        "return-type": "json",
+        "on-click": "~/.config/waybar/scripts/cpu_history.py toggle"
+    },
+
+
+
+    "hyprland/window": {
+        "format": "{initialTitle} |",
+        "tooltip": false,
+        "max-length": 50
+    },
+
+    "clock": {
+        "format": "<b>{:%I:%M %p | %a.%d-%b}</b>",
+        // "format": "<b>{:%I:%M %p}</b>",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>"
+        // "on-click": "sleep 0.1 && swaync-client -t"
+    },
+
+
+
+
+    "backlight": {
+        "format": "{icon} {percent}%",
+        "format-icons": ["󰃞", "󰃞", "󰃞", "󰃟", "󰃟", "󰃟", "󰃠", "󰃠", "󰃠"]
+    },
+
+    "pulseaudio": {
+        "tooltip":false,
+        "format": "{icon} {volume}%  {format_source}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": "  {format_source}",
+        "format-source": "󰍬 {volume}%",
+        "format-source-muted": "󰍭",
+        "format-icons": {
+            "headphone": "󰋋",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol",
+        "tooltip-format": "{volume}% {format_source}"
+    },
+
+    "bluetooth": {
+        "format-on": "󰂯",
+        "format-off": "BT-off",
+        "format-disabled": "󰂲",
+        "format-connected-battery": "{device_battery_percentage}% 󰂯",
+        "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\n{device_address}",
+        "tooltip-format-enumerate-connected-battery": "{device_alias}\n{device_address}\n{device_battery_percentage}%",
+        "on-click": "blueman-manager"
+    },
+
+    "network": {
+        "format-wifi": "",
+        "format-ethernet":"",
+        "format-disconnected": "",
+        "tooltip-format-disconnected": "Error",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+        "tooltip-format-ethernet": "{ifname} 🖧 ",
+        "on-click": "kitty nmtui"
+    },
+
+    "battery": {
+        "interval": 5,
+        "states": {
+            "warning": 30,
+            "critical": 20
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": "󰂄 {capacity}%",
+        "format-plugged": " 󰂄 {capacity}%",
+        "format-icons": [
+            "󰁻",
+            "󰁼",
+            "󰁾",
+            "󰂀",
+            "󰂂",
+            "󰁹"
+        ]
+    },
+
+    "custom/power": {
+        "tooltip": false,
+        "format": "",
+        "on-click": "wlogout"
+    }
+}
