@@ -8,4 +8,5 @@ https://github.com/Keyitdev/sddm-astronaut-theme
 ```sh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/keyitdev/sddm-astronaut-theme/master/setup.sh)"
 ```
-
+## inspiração da waybar
+https://github.com/elifouts/Dotfiles
