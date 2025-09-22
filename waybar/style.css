@@ -1,22 +1,14 @@
 * {
-    border: none;
-    border-radius: 0;
-    font-family: JetBrainsMonoNerdFont, Roboto, Helvetica, Arial, sans-serif;
+    font-family: JetBrainsMonoNerdFont;
     font-size: 12px;
     font-weight: bold;
-    min-height: 0;
+    border: none;
+    border-radius: 0;
 }
 
 window#waybar {
-    background: rgb(43, 48, 59);
-    color: white;
-}
-
-tooltip {
-  background: rgb(43, 48, 59);
-}
-tooltip label {
-  color: white;
+    background-color: rgb(43, 48, 59);
+    color: #ffffff;
 }
 
 #workspaces button.empty {
@@ -26,80 +18,40 @@ tooltip label {
 #workspaces button {
     background-color: rgba(75, 129, 255, 0.39);
     color: #ffffff;
-    box-shadow: none;
-    text-shadow: none;
-    border-radius: 0;
-    padding-left: 6px;
-    padding-right: 6px;
+    padding: 0 5px;
 }
+
 
 #workspaces button.visible {
     background-color: rgb(75, 129, 255);
 }
 
-
 #workspaces button.urgent {
-    background-color: #f53c3c;
+    background-color: #eb4d4b;
 }
 
-#clock, #battery, #custom-power, #network, #bluetooth, #pulseaudio, #backlight {
-    color: #ffffff;
-}
 
-#backlight {
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-#pulseaudio {
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-#bluetooth {
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-#network {
-    padding-left: 10px;
-    padding-right: 15px;
-}
-
-#clock {
-    color: #ffffff;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
+#backlight,
+#pulseaudio,
+#bluetooth,
+#network,
+#battery,
+#clock,
 #custom-power {
-    padding-left: 10px;
-    padding-right: 12px;
-}
-
-#battery {
+    padding: 0 10px;
     color: #ffffff;
-    padding-left: 10px;
-    padding-right: 10px;
 }
 
-#battery.charging {
-    color: white;
-}
 
 @keyframes blink {
     to {
         background-color: #ffffff;
-        color: black;
+        color: #000000;
     }
 }
 
-#battery.warning:not(.charging) {
-    background: #f53c3c;
-    color: white;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: steps(12);
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+/* Using steps() instead of linear as a timing function to limit cpu usage */
+#battery.critical:not(.charging) {
+    background-color: #f53c3c;
+    color: #ffffff;
 }
