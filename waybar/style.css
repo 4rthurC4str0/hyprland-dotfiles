@@ -4,6 +4,7 @@
     font-weight: bold;
     border: none;
     border-radius: 0;
+    box-shadow: none;
 }
 
 window#waybar {
@@ -16,7 +17,7 @@ window#waybar {
 }
 
 #workspaces button {
-    background-color: rgba(75, 129, 255, 0.39);
+    background-color: rgba(4, 79, 255, 0.39);
     color: #ffffff;
     padding: 0 5px;
 }
@@ -30,6 +31,12 @@ window#waybar {
     background-color: #eb4d4b;
 }
 
+#window {
+    font-size: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
 
 #backlight,
 #pulseaudio,
@@ -40,8 +47,30 @@ window#waybar {
 #custom-power {
     padding: 0 10px;
     color: #ffffff;
+    font-size: 13px;
 }
 
+
+
+#bluetooth {
+    font-size: 14px;
+}
+
+#network {
+    padding-right: 14px;
+    font-size: 13px;
+}
+
+#battery {
+    font-size: 13px;
+}
+
+#custom-power {
+    font-size: 15px;
+    padding-right: 15px;
+    padding-left: 12px;
+    background-color: rgb(75, 129, 255);
+}
 
 @keyframes blink {
     to {

@@ -1,6 +1,6 @@
 {
     "height": 25,
-    "spacing": 0,
+    "spacing": 1,
 
 
     "modules-left": [
@@ -37,8 +37,7 @@
 
     "hyprland/window": {
         "format": "{initialTitle}",
-        "tooltip": false,
-        "max-length": 50
+        "tooltip": false
     },
 
     
@@ -46,8 +45,11 @@
     
     
     "backlight": {
+        "tooltip": false,
         "format": "{icon} {percent}%",
-        "format-icons": ["󰃞", "󰃞", "󰃞", "󰃟", "󰃟", "󰃟", "󰃠", "󰃠", "󰃠"]
+        "format-icons": [
+			"", "", "", "", "", "", "", "", ""
+		]
     },
     
     "pulseaudio": {
@@ -70,11 +72,12 @@
         "on-click": "pavucontrol",
         "tooltip-format": "{volume}% {format_source}"
     },
-    
+
     "bluetooth": {
         "format-on": "󰂯",
-        "format-off": "BT-off",
+        "format-off": "󰂲",
         "format-disabled": "󰂲",
+		"format-connected": "󰂱",
         "format-connected-battery": "{device_battery_percentage}% 󰂯",
         "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
         "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
@@ -83,34 +86,45 @@
         "on-click": "blueman-manager"
     },
     
-    "network": {
-        "format-wifi": "",
-        "format-ethernet":"",
-        "format-disconnected": "",
-        "tooltip-format-disconnected": "Error",
-        "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
-        "tooltip-format-ethernet": "{ifname} 🖧 ",
-        "on-click": "kitty nmtui"
-    },
+	"network": {
+		"format-wifi": "{icon}",
+		"format-ethernet": "󰈀",
+		"format-disconnected": "󰤯",
+		"format-disabled": "󰤮",
+		"format-icons": [
+			"󰤟", "󰤢", "󰤥", "󰤨"
+		],
+		"on-click": "kitty nmtui",
+		"tooltip-format": "Gateway: {gwaddr}",
+		"tooltip-format-ethernet": "Interface: {ifname}",
+		"tooltip-format-wifi": "Network: {essid}\nIP Addr: {ipaddr}/{cidr}\nStrength: {signalStrength}%\nFrequency: {frequency} GHz",
+		"tooltip-format-disconnected": "Wi-Fi Disconnected",
+		"tooltip-format-disabled": "Wi-Fi Disabled"
+	},
+
     
-    "battery": {
+	"battery": {
         "interval": 5,
-        "states": {
-            "warning": 30,
-            "critical": 20
-        },
-        "format": "{icon} {capacity}%",
+		"states": {
+			"warning": 20,
+			"critical": 10
+		},
+		"format": "{icon} {capacity}%",
+		"format-time": "{H} hr {M} min",
         "format-charging": "󰂄 {capacity}%",
         "format-plugged": " 󰂄 {capacity}%",
-        "format-icons": [
-            "󰁻",
-            "󰁼",
-            "󰁾",
-            "󰂀",
-            "󰂂",
-            "󰁹"
-        ]
-    },
+		"format-icons": [
+			"󰂎", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"
+		],
+		"tooltip-format": "Discharging: {time}",
+		"tooltip-format-charging": "Charging: {time}",
+		"events": {
+			"on-discharging-warning": "notify-send 'Low Battery' '{capacity}% battery remaining'",
+			"on-discharging-critical": "notify-send 'Low Battery' '{capacity}% battery remaining' -u critical",
+			"on-charging-100": "notify-send 'Battery full' 'Battery is at {capacity}%'"
+		}
+	},
+
     
     "clock": {
         "format": "<b>{:%I:%M %p | %a.%d-%b}</b>",
